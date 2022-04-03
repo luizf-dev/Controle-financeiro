@@ -22,7 +22,7 @@ body {
 .container {
   margin: 0 auto;
   width: 50%;
-  border: 5px solid #fff;
+  border: 2px solid #fff;
   padding: 20px;
   height: 100vh auto;
 }
@@ -57,7 +57,7 @@ h4 {
   color: #000;
 }
 
-.inc-exp-container {
+.painel-receitas-despesas {
   background-color: #fff;
   box-shadow: var(--box-shadow);
   padding: 20px;
@@ -66,13 +66,13 @@ h4 {
   margin: 20px 0;
 }
 
-.inc-exp-container > div {
+.painel-receitas-despesas > div {
   flex: 1;
   text-align: center;
 }
 
-.inc-exp-container > div:first-of-type {
-  border-right: 1px solid #dedede;
+.painel-receitas-despesas > div:first-of-type {
+  border-right: 3px solid #000;
 }
 
 .money {
