@@ -10,10 +10,10 @@ const inputValor = document.querySelector('#amount');
 const localStorageTransacoes = JSON.parse(localStorage.getItem('transacoes'));
 let transacoes = localStorage.getItem('transacoes') !== null ? localStorageTransacoes : [];
 
-const removerTransacao = ID => {
+const removeTransacao = ID => {
     transacoes = transacoes.filter(transacao => transacao.id !== ID);
     atualizarLocalStorage();
-    console.log(removerTransacao);
+    init();
 }
 
 const addvaloresDom = transacao => {
@@ -25,7 +25,11 @@ const addvaloresDom = transacao => {
 
     li.classList.add(classeCss);
     li.innerHTML = `
-        ${transacao.nome} <span>${operador} R$ ${converteValor}</span><button class="delete-btn" onClick="removerTransacao(${transacao.id})">x</button> 
+        ${transacao.nome}
+        <span>${operador} R$ ${converteValor}</span>
+        <button class="delete-btn" onClick="removeTransacao(${transacao.id})">
+            x
+        </button> 
     `;
 
     transacoesUl.append(li);
@@ -62,7 +66,6 @@ const atualizarLocalStorage = () => {
 
 const gerarID = () => Math.round(Math.random() * 1000);
 
-
 /*======EVENTOS=============*/
 
 form.addEventListener('submit', evento => {
@@ -77,7 +80,7 @@ form.addEventListener('submit', evento => {
         return;
     }
 
-    const transacao = {id: gerarID, nome: nomeTransacao, valor: Number(valorTransacao)};
+    const transacao = {id: gerarID(), nome: nomeTransacao, valor: Number(valorTransacao)};
 
     transacoes.push(transacao);
     init();
