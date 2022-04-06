@@ -53,6 +53,16 @@ h4 {
   text-transform: uppercase;
 }
 
+#data-hora{
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: -20px;
+  font-size: 1.3em;
+  text-shadow: 2px 2px 1px #000;
+  font-weight: 900;
+}
+
 .receitas, .despesas{
   color: #000;
 }
@@ -126,7 +136,21 @@ input:focus{
   font-weight: 900;
 }
 
-.btn:hover{
+.btn-print{
+  cursor: pointer;
+  background-color: #2ecc71;
+  box-shadow: var(--box-shadow);
+  color: #000;
+  border: 0;
+  display: block;
+  font-size: 1.3em;
+  margin: 10px 0 30px;
+  padding: 10px;
+  width: 100%;
+  font-weight: 900;
+}
+
+.btn:hover, .btn-print:hover{
   background: #103900;
 }
 
@@ -170,7 +194,7 @@ input:focus{
   border: 0;
   color: #000;
   font-size: 1.3em;
-  line-height: 35px;
+  line-height: 36px;
   padding: 2px 5px;
   position: absolute;
   top: 0;
@@ -192,13 +216,40 @@ input:focus{
 
   }
 
-  .btn:hover{
+  .btn:hover, .btn-print:hover{
     background: #2ecc71;
   }
 }
 
 @media print {
+
+  body{
+    background: #fff;
+  }
+
+  h4{
+    color: #000;
+    font-size: 1.5em;
+  }
+
+  h2{
+    font-size: 1.8em;
+    color: #000;
+  }
+
+  .painel-receitas-despesas{
+    background: #63c98d;
+  }
+
+  #data-hora{
+    color: #000;
+    text-shadow: none;
+  }
   #form{
+    display: none;
+  }
+
+  .no-print{
     display: none;
   }
   

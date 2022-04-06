@@ -19,6 +19,7 @@ const removeTransacao = ID => {
 const addvaloresDom = transacao => {
 
     const converteValor = Math.abs(transacao.valor);
+    const valorReal = converteValor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
     const operador = transacao.valor < 0 ? '-' : '+';
     const classeCss = transacao.valor < 0 ? 'minus' : 'plus';
     const li = document.createElement('li');
@@ -26,7 +27,7 @@ const addvaloresDom = transacao => {
     li.classList.add(classeCss);
     li.innerHTML = `
         ${transacao.nome}
-        <span>${operador} R$ ${converteValor}</span>
+        <span>${operador} R$ ${valorReal}</span>
         <button class="delete-btn" onClick="removeTransacao(${transacao.id})">
             x
         </button> 
@@ -47,9 +48,13 @@ const atualizaValores = () => {
         .reduce((acumulado, value) => acumulado + value, 0))
         .toFixed(2);
     
-    listarSaldoAtual.textContent = `R$ ${total}`;
-    listarReceitas.textContent = `R$ ${receitas}`;
-    listarDespesas.textContent = `R$ ${despesas}`;
+        const totalReal = total.replace('.', ',');
+        const receitasReal = receitas.replace('.', ',');
+        const despesasReal = despesas.replace('.', ',');
+    
+    listarSaldoAtual.textContent = `R$ ${totalReal}`;
+    listarReceitas.textContent = `R$ ${receitasReal}`;
+    listarDespesas.textContent = `R$ ${despesasReal}`;
 }
 
 const init = () => {
@@ -73,14 +78,15 @@ form.addEventListener('submit', evento => {
 
     const nomeTransacao = inputNome.value.trim();
     const valorTransacao = inputValor.value.trim();
+    const valorTransacaoReal = valorTransacao.replace(',','.');
     
 
-    if(nomeTransacao === '' || valorTransacao === ''){
+    if(nomeTransacao === '' || valorTransacaoReal === ''){
         alert('Digite todos os campos!');
         return;
     }
 
-    const transacao = {id: gerarID(), nome: nomeTransacao, valor: Number(valorTransacao)};
+    const transacao = {id: gerarID(), nome: nomeTransacao, valor: Number(valorTransacaoReal)};
 
     transacoes.push(transacao);
     init();
@@ -91,11 +97,13 @@ form.addEventListener('submit', evento => {
 });
 
 
+//MOSTRA A DATA NA TELA 
 
-/**********************************************************************/
-/* Função de mascaras do JQUERY MASK PLUGIN - Campo Valor R$    */
-/*
-    $(document).ready(function(){                                     
-    $('.money').mask('000.000.000.000.000,00', {reverse: true});    
-});
-/**********************************************************************/
+    dayName = new Array ("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
+    monName = new Array ("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Agosto", "Outubro", "Novembro", "Dezembro")
+    now = new Date
+
+    const dataHora =  (monName [now.getMonth() ]   +  " / "  +     now.getFullYear ());
+
+    // Exibe na tela usando a div#data-hora
+    document.getElementById('data-hora').innerHTML = dataHora;

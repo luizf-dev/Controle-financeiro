@@ -12,6 +12,7 @@
 
     <div class="container">
       <h2>Controle Financeiro</h2><br>
+      <div id="data-hora"></div>
       <h4>Saldo atual</h4>
       
       <h1 id="balance" class="balance">R$ 100,00</h1>
@@ -19,12 +20,12 @@
       <div class="painel-receitas-despesas">
         <div>
           <h4 class="receitas">Receitas</h4> 
-          <p id="money-plus" class="money plus">+ R$4.055,62</p> 
+          <p id="money-plus" class="money plus"></p> 
         </div>
 
         <div>
           <h4 class="despesas">Despesas</h4>
-          <p id="money-minus" class="money minus">- R$4.011,25</p>
+          <p id="money-minus" class="money minus"></p>
         </div>
       </div>
 
@@ -32,7 +33,7 @@
       
       <ul id="transactions" class="transactions"></ul>
 
-      <h3>Novas Transações</h3>
+      <h3 class="no-print">Novas Transações</h3>
       
       <form id="form">
         <div class="form-control">
@@ -42,14 +43,16 @@
 
         <div class="form-control">
           <label for="amount">Valor <br />
-            <small>(negativo - despesas, positivo - receitas, use ponto e não vírgula)</small>
+            <small>(negativo - despesas, positivo - receitas)</small>
           </label>
-          <input type="text" id="amount" placeholder="Valor da transação"/>
+          <input type="text"  id="amount" placeholder="Valor da transação"/>
         </div>
 
         <button class="btn">Adicionar</button>
+        <button class="btn-print" onclick="window.print()";>Imprimir</button>
+        
       </form>
     </div>
-  <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
