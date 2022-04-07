@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="img/financa.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css" />
     <title>Controle Financeiro</title>
   </head>
-  <body>
-    
-
+  <body> 
     <div class="container">
       <h2>Controle Financeiro</h2><br>
-      <div id="data-hora"></div>
+      <div id="data-ano"></div>
       <h4>Saldo atual</h4>
       
       <h1 id="balance" class="balance">R$ 100,00</h1>
@@ -29,16 +27,17 @@
         </div>
       </div>
 
-      <h3>Transações</h3>
+      <button class="btn-print no-print" onclick="window.print()";>Imprimir</button>
+      <h3>Todas Movimentações</h3>
       
       <ul id="transactions" class="transactions"></ul>
 
-      <h3 class="no-print">Novas Transações</h3>
+      <h3 class="no-print">Cadastrar Novas Movimentações</h3>
       
       <form id="form">
         <div class="form-control">
           <label for="text">Nome</label>
-          <input autofocus type="text" id="text" placeholder="Nome da transação" />
+          <input autofocus type="text" id="text" placeholder="Nome da transação"/>
         </div>
 
         <div class="form-control">
@@ -48,9 +47,7 @@
           <input type="text"  id="amount" placeholder="Valor da transação"/>
         </div>
 
-        <button class="btn">Adicionar</button>
-        <button class="btn-print" onclick="window.print()";>Imprimir</button>
-        
+        <button class="btn">Adicionar</button>         
       </form>
     </div>
     <script src="js/main.js"></script>

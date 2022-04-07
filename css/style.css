@@ -53,11 +53,10 @@ h4 {
   text-transform: uppercase;
 }
 
-#data-hora{
+#data-ano{
   color: #fff;
-  text-transform: uppercase;
   text-align: center;
-  margin-top: -20px;
+  margin-top: -35px;
   font-size: 1.3em;
   text-shadow: 2px 2px 1px #000;
   font-weight: 900;
@@ -219,6 +218,11 @@ input:focus{
   .btn:hover, .btn-print:hover{
     background: #2ecc71;
   }
+
+  #data-ano{
+    margin-bottom: 30px;
+    font-size: 1em;
+  }
 }
 
 @media print {
@@ -241,10 +245,12 @@ input:focus{
     background: #63c98d;
   }
 
-  #data-hora{
+  #data-ano{
     color: #000;
     text-shadow: none;
   }
+
+
   #form{
     display: none;
   }

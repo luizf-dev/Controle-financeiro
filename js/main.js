@@ -49,12 +49,13 @@ const atualizaValores = () => {
         .toFixed(2);
     
         const totalReal = total.replace('.', ',');
-        const receitasReal = receitas.replace('.', ',');
+        const receitasReal = receitas.replace('.', ',')
         const despesasReal = despesas.replace('.', ',');
     
     listarSaldoAtual.textContent = `R$ ${totalReal}`;
     listarReceitas.textContent = `R$ ${receitasReal}`;
     listarDespesas.textContent = `R$ ${despesasReal}`;
+
 }
 
 const init = () => {
@@ -106,4 +107,4 @@ form.addEventListener('submit', evento => {
     const dataHora =  (monName [now.getMonth() ]   +  " / "  +     now.getFullYear ());
 
     // Exibe na tela usando a div#data-hora
-    document.getElementById('data-hora').innerHTML = dataHora;
+    document.getElementById('data-ano').innerHTML = dataHora;
