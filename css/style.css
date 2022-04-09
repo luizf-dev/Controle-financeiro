@@ -38,6 +38,10 @@ h1 {
   color: #2e75cc;
 }
 
+.saldo-atual-negativo{
+  color: red;
+}
+
 h2{
   text-align: center;
 }
@@ -53,7 +57,7 @@ h4 {
   text-transform: uppercase;
 }
 
-#data-ano{
+#mes-ano{
   color: #fff;
   text-align: center;
   margin-top: -35px;
@@ -219,7 +223,7 @@ input:focus{
     background: #2ecc71;
   }
 
-  #data-ano{
+  #mes-ano{
     margin-bottom: 30px;
     font-size: 1em;
   }
@@ -242,10 +246,19 @@ input:focus{
   }
 
   .painel-receitas-despesas{
-    background: #63c98d;
+    box-shadow: none;
   }
 
-  #data-ano{
+  .delete-btn{
+    display: none;
+  }
+
+  .transactions li{
+    padding-left: 1px;
+    font-size: 1.5em;
+  }
+
+  #mes-ano{
     color: #000;
     text-shadow: none;
   }

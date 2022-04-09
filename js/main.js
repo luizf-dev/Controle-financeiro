@@ -47,14 +47,16 @@ const atualizaValores = () => {
         .filter((value => value < 0))
         .reduce((acumulado, value) => acumulado + value, 0))
         .toFixed(2);
+        
     
-        const totalReal = total.replace('.', ',');
-        const receitasReal = receitas.replace('.', ',')
-        const despesasReal = despesas.replace('.', ',');
+    const totalReal = total.replace('.', ',');
+    const receitasReal = receitas.replace('.', ',')
+    const despesasReal = despesas.replace('.', ',');
+
     
     listarSaldoAtual.textContent = `R$ ${totalReal}`;
     listarReceitas.textContent = `R$ ${receitasReal}`;
-    listarDespesas.textContent = `R$ ${despesasReal}`;
+    listarDespesas.textContent = `R$ ${despesasReal}`;    
 
 }
 
@@ -100,11 +102,10 @@ form.addEventListener('submit', evento => {
 
 //MOSTRA A DATA NA TELA 
 
-    dayName = new Array ("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
     monName = new Array ("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Agosto", "Outubro", "Novembro", "Dezembro")
     now = new Date
 
-    const dataHora =  (monName [now.getMonth() ]   +  " / "  +     now.getFullYear ());
+    const mesAno =  (monName [now.getMonth() ]   +  " / "  +     now.getFullYear ());
 
-    // Exibe na tela usando a div#data-hora
-    document.getElementById('data-ano').innerHTML = dataHora;
+    // Exibe na tela usando a div#data-ano
+    document.getElementById('mes-ano').innerHTML = mesAno;
