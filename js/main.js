@@ -102,7 +102,7 @@ form.addEventListener('submit', evento => {
 
 //MOSTRA A DATA NA TELA 
 
-    monName = new Array ("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Agosto", "Outubro", "Novembro", "Dezembro")
+    monName = new Array ("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho",  "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
     now = new Date
 
     const mesAno =  (monName [now.getMonth() ]   +  " / "  +     now.getFullYear ());
