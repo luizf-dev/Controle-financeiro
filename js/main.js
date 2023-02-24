@@ -27,7 +27,7 @@ const addvaloresDom = transacao => {
     li.classList.add(classeCss);
     li.innerHTML = `
         ${transacao.nome}
-        <span>${operador} R$ ${valorReal}</span>
+        <span>${operador}  ${valorReal}</span>
         <button class="delete-btn" onClick="removeTransacao(${transacao.id})">
             x
         </button> 
@@ -47,11 +47,22 @@ const atualizaValores = () => {
         .filter((value => value < 0))
         .reduce((acumulado, value) => acumulado + value, 0))
         .toFixed(2);
-        
+    
+    var totalFormat = total;
+
+    if(totalFormat > 0){
+        var cor = '#2ecc71';
+    }else if(totalFormat == 0){
+        var cor = 'gray';
+    }else{
+        var cor = '#c0392b';
+    }
     
     const totalReal = total.replace('.', ',');
-    const receitasReal = receitas.replace('.', ',')
+    const receitasReal = receitas.replace('.', ',');
     const despesasReal = despesas.replace('.', ',');
+
+    listarSaldoAtual.style.color = cor;
 
     
     listarSaldoAtual.textContent = `R$ ${totalReal}`;
