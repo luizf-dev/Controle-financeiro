@@ -5,16 +5,6 @@ const listarSaldoAtual = document.querySelector('#balance');
 const form = document.querySelector('#form');
 const inputNome = document.querySelector('#text');
 const inputValor = document.querySelector('#amount');
-const checkboxDespesa = document.querySelector('#despesa');
-const checkboxReceita = document.querySelector('#receita');
-
-checkboxDespesa.addEventListener('click', () => {
-  checkboxReceita.checked = false;
-});
-
-checkboxReceita.addEventListener('click', () => {
-  checkboxDespesa.checked = false;
-});
 
 
 const localStorageTransacoes = JSON.parse(localStorage.getItem('transacoes'));
@@ -28,16 +18,16 @@ const removeTransacao = ID => {
 
 const addvaloresDom = transacao => {
 
-    const converteValor = transacao.valor.toLocaleString('pt-br', {minimumFractionDigits:2});
-    const valorReal = converteValor;
-    //const operador = transacao.valor < 0 ? '-' : '+';
+    const converteValor = Math.abs(transacao.valor);
+    const valorReal = converteValor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+    const operador = transacao.valor < 0 ? '-' : '+';
     const classeCss = transacao.valor < 0 ? 'minus' : 'plus';
     const li = document.createElement('li');
 
     li.classList.add(classeCss);
     li.innerHTML = `
         ${transacao.nome}
-        <span>  ${valorReal}</span>
+        <span>${operador}  ${valorReal}</span>
         <button class="delete-btn" onClick="removeTransacao(${transacao.id})">
             x
         </button> 
@@ -48,15 +38,16 @@ const addvaloresDom = transacao => {
 
 const atualizaValores = () => {
     const valoresTransacoes = transacoes.map(transacao => transacao.valor);
-    const total = valoresTransacoes.reduce((acumulado, transacao) => acumulado + transacao, 0);
+    const total = valoresTransacoes.reduce((acumulado, transacao) => acumulado + transacao, 0).toFixed(2);
     const receitas = valoresTransacoes
         .filter((value => value > 0))
-        .reduce((acumulado, value) => acumulado + value, 0);
+        .reduce((acumulado, value) => acumulado + value, 0)
+        .toFixed(2);
     const despesas = Math.abs(valoresTransacoes
         .filter((value => value < 0))
-        .reduce((acumulado, value) => acumulado + value, 0));
-
-
+        .reduce((acumulado, value) => acumulado + value, 0))
+        .toFixed(2);
+    
     var totalFormat = total;
 
     if(totalFormat > 0){
@@ -67,9 +58,9 @@ const atualizaValores = () => {
         var cor = '#c0392b';
     }
     
-    const totalReal = total.toLocaleString('pt-br', {minimumFractionDigits:2});
-    const receitasReal = receitas.toLocaleString('pt-br', {minimumFractionDigits:2});
-    const despesasReal = despesas.toLocaleString('pt-br', {minimumFractionDigits:2});
+    const totalReal = total.replace('.', ',');
+    const receitasReal = receitas.replace('.', ',');
+    const despesasReal = despesas.replace('.', ',');
 
     listarSaldoAtual.style.color = cor;
 
@@ -99,20 +90,9 @@ const gerarID = () => Math.round(Math.random() * 1000);
 form.addEventListener('submit', evento => {
     evento.preventDefault();
 
-    let tipoSelecionado;
     const nomeTransacao = inputNome.value.trim();
     const valorTransacao = inputValor.value.trim();
-    const despesa = checkboxDespesa.value.trim();
-    const receita = checkboxReceita.value.trim();
-    const valorTransacaoSemMask = valorTransacao.replace(/\./g, '').replace(',', '.');
-    const valorTransacaoReal = parseFloat(valorTransacaoSemMask);
-    
-
-    if(checkboxDespesa.checked){
-        tipoSelecionado = despesa;
-    }else if (checkboxReceita.checked){
-        tipoSelecionado = receita;
-    }      
+    const valorTransacaoReal = valorTransacao.replace(',','.');
     
 
     if(nomeTransacao === '' || valorTransacaoReal === ''){
@@ -120,15 +100,7 @@ form.addEventListener('submit', evento => {
         return;
     }
 
-    if(checkboxDespesa.checked == false && checkboxReceita.checked == false){
-        alert('Selecione o tipo para registrar despesa ou receita!');
-        return;
-    }
-
-    const valor = tipoSelecionado + valorTransacaoReal;
-    
-    
-    const transacao = {id: gerarID(), nome: nomeTransacao, valor: Number(valor), tipo: tipoSelecionado};
+    const transacao = {id: gerarID(), nome: nomeTransacao, valor: Number(valorTransacaoReal)};
 
     transacoes.push(transacao);
     init();

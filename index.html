@@ -2,10 +2,11 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8"/>
+    <title>Controle Financeiro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="img/financa.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css" />
-    <title>Controle Financeiro</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
   </head>
   <body> 
     <div class="container">
@@ -41,15 +42,28 @@
 
         <div class="form-control">
           <label for="amount">Valor <br />
-            <small>Para cadastrar despesas use valores negativos(-)</small>
           </label>
-          <input type="text"  id="amount" placeholder="Valor da transação"/>
+          <input type="text" class="money"  id="amount" placeholder="Valor da transação"/>
+        </div>
+
+        <div class="form-control check">
+        <small>Escolha abaixo o tipo</small><br>
+          <label for="receita">Receita
+            <input type="checkbox" id="receita" name="tipo" value="+">
+          </label>
+          <label for="despesa">Despesa
+            <input type="checkbox" id="despesa"  name="tipo" value="-">
+          </label>
         </div>
 
         <button class="btn">Adicionar</button>         
       </form>
       <button class="btn-print no-print" onclick="window.print()";>Imprimir</button>
     </div>
+    <!--? Javascript-->
     <script src="js/main.js"></script>
+    <script src="js/mask.js"></script>
+    <!--? Biblioteca Jquery Mask Plugin-->
+    <script src="Mask-Plugin/dist/jquery.mask.min.js"></script>
   </body>
 </html>

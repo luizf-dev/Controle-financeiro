@@ -28,7 +28,7 @@ body {
   background: #1e1e20;
 }
 
-h2,h3,h4,label{
+h2,h3,h4{
   color: #fff;
   font-weight: 900;
 }
@@ -108,10 +108,23 @@ h4 {
 label {
   display: inline-block;
   margin: 10px 0;
+  color: #fff;  
+  font-size: 1.4em;
 }
 
-input[type='text'],
-input[type='number'] {
+input[type='checkbox']{
+  transform: scale(1);
+}
+
+.check{
+  margin-top: 20px;
+}
+
+small{
+  color: #fff;
+}
+
+input[type='text']{
   border: 1px solid #dedede;
   display: block;
   font-size: 16px;
