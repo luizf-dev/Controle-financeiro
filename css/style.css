@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
-:root {
-  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
 * {
   box-sizing: border-box;
 }
@@ -23,24 +19,18 @@ body {
   margin: 0 auto;
   width: 40%;
   border: 2px solid #fff;
-  padding: 20px;
+  padding: 10px;
   height: 100vh auto;
   background: #1e1e20;
 }
 
-h2,h3,h4{
+h2,h4{
   color: #fff;
-  font-weight: 900;
 }
 
 h1 {
   letter-spacing: 1px;
   margin: 0;
-  color: #2e75cc;
-}
-
-.saldo-atual-negativo{
-  color: red;
 }
 
 h2{
@@ -48,14 +38,16 @@ h2{
 }
 
 h3 {
-  border-bottom: 1px solid #bbb;
-  padding-bottom: 10px;
-  margin: 20px 0 5px;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 10px;  
+  color: #fff;
+  font-weight: 100;
 }
 
 h4 {
   margin: 0;
   text-transform: uppercase;
+  font-weight: 100;
 }
 
 #mes-ano{
@@ -63,18 +55,17 @@ h4 {
   text-align: center;
   margin-top: -35px;
   font-size: 1.3em;
-  text-shadow: 2px 2px 1px #000;
-  font-weight: 900;
 }
 
 .receitas, .despesas{
   color: #000;
+  font-weight: 900;
 }
 
 .painel-receitas-despesas {
   background-color: #fff;
   box-shadow: 3px 3px 2px #000;
-  padding: 20px;
+  padding: 30px;
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
@@ -139,24 +130,14 @@ input:focus{
   font-size: 1.2em;
 }
 
-.btn {
-  cursor: pointer;
-  background-color: #2ecc71;
-  box-shadow: var(--box-shadow);
-  color: #000;
-  border: 0;
-  display: block;
-  font-size: 1.3em;
-  margin: 10px 0 30px;
-  padding: 10px;
-  width: 100%;
-  font-weight: 900;
+input::placeholder{
+  color: #494747;
 }
 
-.btn-print{
+.btn, .btn-print {
   cursor: pointer;
   background-color: #2ecc71;
-  box-shadow: var(--box-shadow);
+  box-shadow: 3px 3px 10px #000;
   color: #000;
   border: 0;
   display: block;
@@ -168,7 +149,7 @@ input:focus{
 }
 
 .btn:hover, .btn-print:hover{
-  background: #103900;
+  background: green;
 }
 
 .btn:focus,
@@ -184,7 +165,6 @@ input:focus{
 
 .transactions li {
   background-color: #fff;
-  box-shadow: var(--box-shadow);
   color: #000;
   font-weight: 900;
   display: flex;
@@ -193,10 +173,11 @@ input:focus{
   padding: 10px;
   margin: 10px 0;
   padding-left: 50px;
+  text-transform: capitalize;
 }
 
 .transactions li.plus {
-  border-right: 10px solid #103900;
+  border-right: 10px solid green;
   background: #63c98d;
 }
 
@@ -224,16 +205,16 @@ input:focus{
   opacity: 1;
 }
 
+.delete-btn:hover{
+  background-color: #c0392b;
+}
+
 @media (max-width: 768px){
 
   .container{
     width: 100%;    
     position: absolute;
     top: 0;
-  }
-
-  .btn:hover, .btn-print:hover{
-    background: #2ecc71;
   }
 
   #mes-ano{
