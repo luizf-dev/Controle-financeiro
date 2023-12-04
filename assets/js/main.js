@@ -124,13 +124,27 @@ form.addEventListener('submit', evento => {
     
     //* Verifica se os inputs foram preenchidos
     if(nomeTransacao === '' || valorTransacaoReal === ''){
-        alert('Digite todos os campos!');
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Ops! :(',
+            text: 'Preencha todos os campos corretamente!',
+            showConfirmButton: false,
+            timer: 6000
+          })
         return;
     }
 
     //* Verifica se algum checkbox está selecionado para capturar o tipo da transação(receita ou despesa)
     if(checkboxDespesa.checked == false && checkboxReceita.checked == false){
-        alert('Selecione o tipo para registrar despesa ou receita!');
+        Swal.fire({
+            position: 'center',
+            icon: 'question',
+            title: 'Ops! :(',
+            text: 'Selecione a modalidade da transação, "receita" ou "despesa!"',
+            showConfirmButton: false,
+            timer: 6000
+          })
         return;
     }
 

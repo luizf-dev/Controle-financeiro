@@ -50,6 +50,11 @@ h4 {
   font-weight: 100;
 }
 
+img{
+  width: 80px;
+  text-align: right;
+}
+
 #mes-ano{
   color: #fff;
   text-align: center;
