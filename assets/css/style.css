@@ -139,9 +139,8 @@ input::placeholder{
   color: #494747;
 }
 
-.btn, .btn-print {
+.btn{
   cursor: pointer;
-  background-color: #2ecc71;
   box-shadow: 3px 3px 10px #000;
   color: #000;
   border: 0;
@@ -153,8 +152,20 @@ input::placeholder{
   font-weight: 900;
 }
 
-.btn:hover, .btn-print:hover{
+.btn-add{
+  background-color: #2ecc71;
+}
+
+.btn-print {
+  background-color: #e3b505;
+}
+
+.btn:hover{
   background: green;
+}
+
+.btn-print:hover{
+  background-color: #e0ff4f;
 }
 
 .btn:focus,
