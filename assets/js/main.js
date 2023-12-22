@@ -1,4 +1,3 @@
-
 // * Seleciona os campos através dos ID's
 const transacoesUl = document.querySelector('#transactions');
 const listarReceitas = document.querySelector('#money-plus');
