@@ -31,35 +31,40 @@ h2,h4{
 h1 {
   letter-spacing: 1px;
   margin: 0;
+  font-size: 0.9rem;
 }
 
 h2{
   text-align: center;
-  margin-top: -80px;
+  margin-top: -50px;
+  font-size: 1rem;
+  padding-bottom: 10px;
 }
 
 h3 {
   border-bottom: 1px solid #fff;
   padding-bottom: 10px;  
   color: #fff;
-  font-weight: 100;
+  font-weight: 900;
+  font-size: 0.8rem;
 }
 
 h4 {
   margin: 0;
   text-transform: uppercase;
   font-weight: 100;
+  font-size: 0.8rem;
 }
 
 img{
-  width: 80px; 
+  width: 50px; 
 }
 
 #mes-ano{
   color: #fff;
   text-align: center;
   margin-top: -35px;
-  font-size: 1.3em;
+  font-size: 0.8em;
 }
 
 .receitas, .despesas{
@@ -69,11 +74,11 @@ img{
 
 .painel-receitas-despesas {
   background-color: #fff;
-  box-shadow: 3px 3px 2px #000;
-  padding: 30px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
+  border-radius: 8px;
 }
 
 .painel-receitas-despesas > div {
@@ -105,7 +110,7 @@ label {
   display: inline-block;
   margin: 10px 0;
   color: #fff;  
-  font-size: 1.4em;
+  font-size: 1em;
 }
 
 input[type='checkbox']{
@@ -127,7 +132,6 @@ input[type='text']{
   padding: 10px;
   width: 100%;
   color: #000;
-  font-weight: 900;
 }
 
 input:focus{
@@ -185,11 +189,11 @@ input::placeholder{
   font-weight: 900;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: relative;
-  padding: 10px;
+  padding: 5px;
   margin: 10px 0;
   padding-left: 50px;
-  text-transform: capitalize;
 }
 
 .transactions li.plus {
@@ -198,31 +202,27 @@ input::placeholder{
 }
 
 .transactions li.minus {
+  display: flex;
+  align-items: ce;
   border-right: 10px solid red;
   background: #c08881;
 }
 
 .delete-btn {
   cursor: pointer;
-  background-color: red;
+  background-color: transparent;
   border: 0;
-  border-radius: 50%;
-  color: #000;
-  font-size: 1.3em;
+  color: rgb(94, 15, 15);
+  font-size: 1em;
   line-height: 36px;
-  padding: 2px 5px;
   position: absolute;
-  top: 0;
-  left: 0px;
+  top: 5px;
+  left: 0;
   width: 40px;
 }
 
 .transactions li:hover .delete-btn {
   opacity: 1;
-}
-
-.delete-btn:hover{
-  background-color: #c0392b;
 }
 
 @media (max-width: 768px){

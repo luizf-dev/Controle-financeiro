@@ -41,11 +41,14 @@ const addvaloresDom = transacao => {
 
     li.classList.add(classeCss);
     li.innerHTML = `
-        ${transacao.nome}
-        <span>${valorReal}</span>
         <button class="delete-btn" onClick="removeTransacao(${transacao.id})">
-            x
-        </button> 
+           <i class="fa-solid fa-trash"></i>
+        </button>
+        <div>
+          <strong>${transacao.nome}</strong><br>
+          <small style="color: black; font-size: 8px;">${transacao.data}</small>
+        </div>
+        <span>${valorReal}</span>        
     `;
 
     transacoesUl.append(li);
@@ -83,10 +86,20 @@ const atualizaValores = () => {
 }
 
 
-//* Funçao que inicia a aplicaçã, é executada logo após o carregamento da página
+//* Funçao que inicia a aplicação, é executada logo após o carregamento da página
 const init = () => {
-    transacoesUl.innerHTML = '';
-    transacoes.forEach(addvaloresDom)
+     transacoesUl.innerHTML = '';
+
+    const transacoesOrdenadas = [...transacoes].sort((a, b) => {
+        // Primeiro separa receitas (+) e despesas (-)
+        if (a.valor > 0 && b.valor < 0) return -1;
+        if (a.valor < 0 && b.valor > 0) return 1;
+
+        // Se forem do mesmo tipo, ordena pela data (mais recente primeiro)
+        return new Date(b.dataISO) - new Date(a.dataISO);
+    });
+
+    transacoesOrdenadas.forEach(addvaloresDom);
     atualizaValores();
 }
 
@@ -149,9 +162,22 @@ form.addEventListener('submit', evento => {
 
     //* Concatena o tipo selecionado com o valor real da transação para que seja um número negativo ou positivo
     const valor = tipoSelecionado + valorTransacaoReal;
+
+    //* converte a data **/
+    const agora = new Date();
+    const dataFormatada = agora.toLocaleDateString('pt-BR');
+    const horaFormatada = agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
     
-    //* Variável que guarda todos os valores para salvar no LocalStorage
-    const transacao = {id: gerarID(), nome: nomeTransacao, valor: Number(valor), tipo: tipoSelecionado};
+    //* Variável que guarda todos os valores para salvar no LocalStorage    
+    const transacao = {
+        id: gerarID(),
+        nome: nomeTransacao,
+        valor: Number(valor),
+        tipo: tipoSelecionado,
+        data: `${dataFormatada} - ${horaFormatada}`, // para exibir na tela
+        dataISO: agora.toISOString() // para ordenar corretamente
+    };
 
     //* Adiciona valores ao final do array, com o push() e cria u novo array, e atualiza o LocalStorage
     transacoes.push(transacao);
@@ -170,3 +196,18 @@ form.addEventListener('submit', evento => {
     const mesAno =  (monName [now.getMonth() ]   +  " / "  +     now.getFullYear ());
     //*Exibe na tela usando a div#data-ano
     document.getElementById('mes-ano').innerHTML = mesAno;
+
+
+//========== service worker para pwa ==========
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker
+      .register('./service-worker.js')
+      .then(function (registration) {
+        console.log('Service Worker registrado com sucesso:', registration.scope);
+      })
+      .catch(function (error) {
+        console.error('Falha ao registrar o Service Worker:', error);
+      });
+  });
+}
