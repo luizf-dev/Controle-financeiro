@@ -18,7 +18,6 @@ body {
 .container {
   margin: 0 auto;
   width: 40%;
-  border: 2px solid #fff;
   padding: 10px;
   height: 100vh auto;
   background: #1e1e20;
